@@ -1,6 +1,6 @@
 class ForumSubscription < ApplicationRecord
   belongs_to :forum_thread
-  belongs_to :user
+  belongs_to :user, class_name: "Users::User"
 
   scope :optin, ->{ where(subscription_type: :optin) }
   scope :optout, ->{ where(subscription_type: :optout) }

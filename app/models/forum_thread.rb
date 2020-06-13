@@ -3,7 +3,7 @@ class ForumThread < ApplicationRecord
   friendly_id :title, use: :slugged
 
   belongs_to :forum_category
-  belongs_to :user
+  belongs_to :user, class_name: "Users::User"
   has_many :forum_posts
   has_many :forum_subscriptions
   has_many :optin_subscribers,  ->{ where(forum_subscriptions: { subscription_type: :optin }) },  through: :forum_subscriptions, source: :user
